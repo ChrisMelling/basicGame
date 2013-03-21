@@ -1,0 +1,110 @@
+﻿Build started 19/12/2012 09:50:52.
+     1>Project "C:\Users\Chris\Documents\Visual Studio 2010\Projects\test2\test2\test2.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\test2.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\SFML-2.0-rc\include\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt blueEnemy.cpp blueParticle.cpp Bullet.cpp Cursor.cpp Enemy.cpp Entity.cpp GameObjectManager.cpp gameoverState.cpp GameState.cpp Application.cpp Levelup.cpp Main.cpp MainGame.cpp MainMenu.cpp Particle.cpp Player.cpp powerUp.cpp powerupRapid.cpp Quadtree.cpp redEnemy.cpp redParticle.cpp StateManager.cpp textureManager.cpp trailParticle.cpp triPowerup.cpp wanderEnemy.cpp
+         wanderEnemy.cpp
+         triPowerup.cpp
+         trailParticle.cpp
+         textureManager.cpp
+         StateManager.cpp
+         redParticle.cpp
+         redEnemy.cpp
+         Quadtree.cpp
+         powerupRapid.cpp
+         powerUp.cpp
+         Player.cpp
+         Particle.cpp
+         MainMenu.cpp
+         MainGame.cpp
+     1>c:\users\chris\documents\visual studio 2010\projects\test2\test2\maingame.cpp(108): warning C4482: nonstandard extension used: enum 'Entity::entityName' used in qualified name
+     1>c:\users\chris\documents\visual studio 2010\projects\test2\test2\maingame.cpp(198): warning C4482: nonstandard extension used: enum 'Entity::entityName' used in qualified name
+         Main.cpp
+         Levelup.cpp
+         Application.cpp
+     1>c:\users\chris\documents\visual studio 2010\projects\test2\test2\application.cpp(55): warning C4482: nonstandard extension used: enum 'GameState::Statename' used in qualified name
+         GameState.cpp
+         gameoverState.cpp
+     1>c:\users\chris\documents\visual studio 2010\projects\test2\test2\gameoverstate.cpp(6): warning C4482: nonstandard extension used: enum 'GameState::Statename' used in qualified name
+         GameObjectManager.cpp
+         Generating Code...
+         Compiling...
+         Entity.cpp
+         Enemy.cpp
+         Cursor.cpp
+         Bullet.cpp
+         blueParticle.cpp
+         blueEnemy.cpp
+         Generating Code...
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\test2.exe.embed.manifest.res" Debug\test2_manifest.rc 
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Chris\Documents\Visual Studio 2010\Projects\test2\Debug\test2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML-2.0-rc\lib" "sfml-graphics.lib" "sfml-window.lib" "sfml-system.lib" "sfml-audio.lib" "sfml-audio.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\test2.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Chris\Documents\Visual Studio 2010\Projects\test2\Debug\test2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Chris\Documents\Visual Studio 2010\Projects\test2\Debug\test2.lib" /MACHINE:X86 Debug\test2.exe.embed.manifest.res
+         Debug\blueEnemy.obj
+         Debug\blueParticle.obj
+         Debug\Bullet.obj
+         Debug\Cursor.obj
+         Debug\Enemy.obj
+         Debug\Entity.obj
+         Debug\GameObjectManager.obj
+         Debug\gameoverState.obj
+         Debug\GameState.obj
+         Debug\Application.obj
+         Debug\Levelup.obj
+         Debug\Main.obj
+         Debug\MainGame.obj
+         Debug\MainMenu.obj
+         Debug\Particle.obj
+         Debug\Player.obj
+         Debug\powerUp.obj
+         Debug\powerupRapid.obj
+         Debug\Quadtree.obj
+         Debug\redEnemy.obj
+         Debug\redParticle.obj
+         Debug\StateManager.obj
+         Debug\textureManager.obj
+         Debug\trailParticle.obj
+         Debug\triPowerup.obj
+         Debug\wanderEnemy.obj
+       Manifest:
+         Deleting file "Debug\test2.exe.embed.manifest".
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\test2.exe.embed.manifest" /manifest Debug\test2.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\test2.exe.embed.manifest.res" Debug\test2_manifest.rc 
+       LinkEmbedManifest:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Chris\Documents\Visual Studio 2010\Projects\test2\Debug\test2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SFML-2.0-rc\lib" "sfml-graphics.lib" "sfml-window.lib" "sfml-system.lib" "sfml-audio.lib" "sfml-audio.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\test2.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Chris\Documents\Visual Studio 2010\Projects\test2\Debug\test2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Chris\Documents\Visual Studio 2010\Projects\test2\Debug\test2.lib" /MACHINE:X86 Debug\test2.exe.embed.manifest.res
+         Debug\blueEnemy.obj
+         Debug\blueParticle.obj
+         Debug\Bullet.obj
+         Debug\Cursor.obj
+         Debug\Enemy.obj
+         Debug\Entity.obj
+         Debug\GameObjectManager.obj
+         Debug\gameoverState.obj
+         Debug\GameState.obj
+         Debug\Application.obj
+         Debug\Levelup.obj
+         Debug\Main.obj
+         Debug\MainGame.obj
+         Debug\MainMenu.obj
+         Debug\Particle.obj
+         Debug\Player.obj
+         Debug\powerUp.obj
+         Debug\powerupRapid.obj
+         Debug\Quadtree.obj
+         Debug\redEnemy.obj
+         Debug\redParticle.obj
+         Debug\StateManager.obj
+         Debug\textureManager.obj
+         Debug\trailParticle.obj
+         Debug\triPowerup.obj
+         Debug\wanderEnemy.obj
+         test2.vcxproj -> C:\Users\Chris\Documents\Visual Studio 2010\Projects\test2\Debug\test2.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\test2.unsuccessfulbuild".
+         Touching "Debug\test2.lastbuildstate".
+     1>Done Building Project "C:\Users\Chris\Documents\Visual Studio 2010\Projects\test2\test2\test2.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:10.61
