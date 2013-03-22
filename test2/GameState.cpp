@@ -1,11 +1,9 @@
 #include "GameState.h"
 
 GameState::GameState(Statename newName, Application *App)
-{
-	app = App;
-	name = newName;   
-	active = false;                         
-	loaded = false;                                
+	: name(newName),app(App), active(false), loaded(false)
+{ 
+                         
 }
 
 GameState::~GameState()

@@ -3,10 +3,9 @@
 #include "GameState.h"
 #include "Application.h"
 
-Entity::Entity(GameState *state) :_isLoaded(false)
+Entity::Entity(GameState *state) 
+	:_isLoaded(false), _state(state), alive(true)
 {
-	_state = state;
-	alive = true;
 
 }
 

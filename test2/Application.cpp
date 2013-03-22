@@ -8,7 +8,7 @@ Application::Application( std::string title, float width, float height,int bpp, 
 {
 	b_running_ = true;
 
-	_window.create( sf::VideoMode( (int)width_, (int)height_, bpp_ ), title_ );
+	_window.create( sf::VideoMode( (int)width, (int)height, bpp ), title_, sf::Style::Close);
 
 	Init();
 }

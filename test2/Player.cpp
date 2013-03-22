@@ -8,7 +8,7 @@
 #include "trailParticle.h"
 
 
-Player::Player(GameState *state) : Entity(state)
+Player::Player(GameState *state) : Entity(state) , score(0), health(100), xp(0), rank(0), bulletSpeed(600),triShot(false),rapidFire(false)
 { 
 	Load(state->getApp()->gettextureManager().Get("Content/zombie.png"));
 	//SetPosition(_state->getApp()->GetWidth() / 2, _state->getApp()->GetHeight() / 2);
