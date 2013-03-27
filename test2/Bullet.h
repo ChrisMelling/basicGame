@@ -9,6 +9,5 @@ public:
 	virtual void Update(float frametime);
 
 protected:
-	float speed;
 	float timeAcc;
 };

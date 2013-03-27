@@ -14,6 +14,7 @@ Application::Application( std::string title, float width, float height,int bpp, 
 }
 
 void Application::Create( std::string title, float width, float height, int bpp, bool b_fullscreen )
+
 {
 	title_		  = title;
 	width_		  = width;

@@ -19,24 +19,31 @@ class GameState
 	GameState(Statename state, Application* app);
 	~GameState();
 
-	virtual void Init();
-	virtual void Update(float elapsedTime);
-	virtual void Render(sf::RenderWindow& renderWindow);
-	virtual void Enable();
-	virtual void Disable();
+	virtual void							Init();
+	virtual void							Update(float elapsedTime);
+	virtual void							Render(sf::RenderWindow& renderWindow);
+	virtual void							Enable();
+	virtual void							Disable();
+
+	int 									GetWindowWidth();
+	int 									GetWindowHeight();
+	void 									SetView( sf::View NewView );
+	void 									SetViewOn( Entity* TargetActor );
+	void 									SetDefaultView();
+	const sf::View & 						GetDefaultView();
 	
-	bool getLoaded();
-	void toggleActive();
-	bool getActive();
-	Statename getStateName();
-	Application* getApp();
+	bool									getLoaded();
+	void									toggleActive();
+	bool									getActive();
+	Statename								getStateName();
+	Application*							getApp();
 	protected:
 
-	bool active;
-	bool loaded;
-	Statename name;
+	bool									active;
+	bool									loaded;
+	Statename								name;
 
-	Application *app;
+	Application								*app;
 };
 
 #endif

@@ -49,7 +49,7 @@ void MainGame::Init()
 
 
 
-	for (int i = 0; i < 2000; i++)
+	for (int i = 0; i < 1000; i++)
 	{		
 		_gameObjectManager.Add(new wanderEnemy(20.0f + wave * 10, random_number(0, getApp()->GetWidth()),random_number(0, getApp()->GetHeight()),this));
 	}
@@ -113,7 +113,6 @@ void MainGame::Update(float elapsedTime)
 	timer.setCharacterSize(9);
 	timer.setPosition(0, 0);
 	timer.setCharacterSize(20);
-
 
 	Player* _player = reinterpret_cast<Player*>(_gameObjectManager.Get(Entity::entityName::entityPlayer));
 
@@ -219,7 +218,7 @@ void MainGame::nextWave()
 	wave++;
 
 
-	for (int i = 0; i < 2000 + wave * 20; i++)
+	for (int i = 0; i < 1000 + wave * 20; i++)
 	{		
 		_gameObjectManager.Add(new wanderEnemy(20.0f + wave * 10.0f, random_number(0.0f, getApp()->GetWidth()),random_number(0.0f, getApp()->GetHeight()),this));
 	}

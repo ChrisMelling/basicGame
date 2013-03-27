@@ -9,7 +9,23 @@ class GameState;
 class Entity
 {
 public:
-	Entity(GameState *state);
+	enum entityName
+	{
+		entityDetault,
+		entityPowerUp,
+		entityPlayer,
+		entityBullet,
+		entityEnemy,
+		entityCursor,
+		entityParticle,
+	};
+
+	Entity(GameState *state, bool collidable);
+	Entity(GameState *state, bool collidable, entityName _name);
+	Entity(GameState *state, bool collidable, entityName _name, float speed);
+	Entity(GameState *state, entityName _name, float speed);
+	Entity(GameState *state, float speed);
+
 	virtual ~Entity();
 	
 	void Load(std::string filename);
@@ -32,31 +48,22 @@ public:
 	virtual void Touch(Entity *Other);
 	virtual void onDeath();
 	void toggleDeath();
-	
-	enum entityName
-	{
-		entityPowerUp,
-		entityPlayer,
-		entityBullet,
-		entityEnemy,
-		entityCursor,
-		entityParticle,
-	};
-
-	bool collidable;
-
+	int 									getWindowWidth();
+	int 									getWindowHeight();
 	entityName getEntityName();
-	entityName name;
 	bool alive;
 	GameState *_state;
-	float speed;
+protected:
 
-private:
 	sf::Sprite  _sprite;
 	sf::Texture _texture;
 	std::string _filename;
 	bool _isLoaded;
 	int ID;
 	sf::Rect<float> r1;
+	float speed;
+	bool collidable;
+
+	entityName name;
 };
 

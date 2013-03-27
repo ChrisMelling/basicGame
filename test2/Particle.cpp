@@ -1,7 +1,7 @@
 #include "Particle.h"
 #define pi 3.14159265
 
-Particle::Particle(float dirx, float diry,GameState *state) : Entity(state)
+Particle::Particle(float dirx, float diry,GameState *state) : Entity(state,false)
 {
 	name =  entityParticle;
 	GetSprite().setScale( (float)random_number(0.4f, 0.7f), (float)random_number(0.4f, 0.7f) );

@@ -2,12 +2,11 @@
 
 #include "Application.h"
 
-powerUp::powerUp(GameState *state,float x, float y) : Entity(state)
+powerUp::powerUp(GameState *state,float x, float y) : Entity(state, true)
 { 
 	name =  entityPowerUp;
 	GetSprite().setPosition(x,y);
 	GetSprite().setScale(0.4f,0.4f);
-	collidable = true;
 }
 
 powerUp::~powerUp()

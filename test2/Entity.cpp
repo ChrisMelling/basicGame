@@ -3,11 +3,23 @@
 #include "GameState.h"
 #include "Application.h"
 
-Entity::Entity(GameState *state) 
-	:_isLoaded(false), _state(state), alive(true)
-{
+Entity::Entity(GameState *state, bool collidable) 
+	:_isLoaded(false), _state(state), alive(true), collidable(collidable), name(entityName::entityDetault) {}
 
-}
+Entity::Entity(GameState *state, bool collidable, entityName _name)
+	:_isLoaded(false), _state(state), alive(true), collidable(collidable), name(_name) {} 
+
+
+Entity::Entity(GameState *state, bool collidable, entityName _name, float speed)
+	:_isLoaded(false), _state(state), alive(true), collidable(collidable), name(_name), speed(speed) {}
+
+
+Entity::Entity(GameState *state, entityName _name, float speed) 
+	:_isLoaded(false), _state(state), alive(true), collidable(false), name(_name), speed(speed) {}
+
+Entity::Entity(GameState *state, float speed) 
+	:_isLoaded(false), _state(state), alive(true), collidable(false), name(entityName::entityDetault), speed(speed) {}
+
 
 
 Entity::~Entity()
@@ -102,6 +114,11 @@ Entity::entityName Entity::getEntityName()
 	return name;
 }
 
+bool Entity::isCollidable()
+{
+	return collidable;
+}
+
 float Entity::random_number(float low, float high)
 {
     return low + ((float)((float)rand() / (float)RAND_MAX) * (float)((high) - (low)));
@@ -115,7 +132,12 @@ void Entity::toggleDeath()
 
 void Entity::onDeath(){}
 
-bool Entity::isCollidable()
+int Entity::getWindowHeight()
 {
-	return collidable;
+	return _state->GetWindowWidth();
+}
+
+int Entity::getWindowWidth()
+{
+	return _state->GetWindowHeight();
 }

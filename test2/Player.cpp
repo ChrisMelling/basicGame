@@ -8,26 +8,14 @@
 #include "trailParticle.h"
 
 
-Player::Player(GameState *state) : Entity(state) , score(0), health(100), xp(0), rank(0), bulletSpeed(600),triShot(false),rapidFire(false)
+Player::Player(GameState *state) 
+	: Entity(state,true,entityName::entityPlayer, 200), score(0), health(100), xp(0), rank(0), bulletSpeed(600),triShot(false),rapidFire(false),_colour(sf::Color(128,255,86,255))
 { 
 	Load(state->getApp()->gettextureManager().Get("Content/zombie.png"));
-	//SetPosition(_state->getApp()->GetWidth() / 2, _state->getApp()->GetHeight() / 2);
 
-	SetPosition(state->getApp()->GetWidth() / 2,_state->getApp()->GetHeight() / 2);
+	SetPosition(getWindowWidth() / 2, getWindowHeight() / 2);
 
-	name =  entityPlayer;
-	score = 0;
-	health = 100;
-	xp = 0;
-	rank = 0;
-	bulletSpeed = 600;
 	GetSprite().setScale(0.5f,0.5f);
-	triShot = false;
-	rapidFire = false;
-	collidable = true;
-
-	_colour = sf::Color(128,255,86,255);
-
 	GetSprite().setColor(_colour);
 
 	controllerIndex = 0;

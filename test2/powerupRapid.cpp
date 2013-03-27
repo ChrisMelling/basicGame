@@ -14,6 +14,6 @@ powerupRapid::~powerupRapid()
 
 void powerupRapid::onPickup(Entity* object)
 {
-	reinterpret_cast<Player*>(object)->rapidFire = true;
+	//reinterpret_cast<Player*>(object)->rapidFire = true;
 }
 

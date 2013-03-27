@@ -9,7 +9,7 @@
 
 #define pi 3.14159265
 
-Enemy::Enemy(float Speed, GameState *state) : Entity(state)
+Enemy::Enemy(float Speed, GameState *state) : Entity(state, true,entityName::entityEnemy,Speed)
 { 
 	name =  entityEnemy;
 	speed = Speed;
@@ -23,7 +23,7 @@ Enemy::~Enemy()
 }
 
 void Enemy::Update(float frametime)
-{
+{\
 	Player* _Player = reinterpret_cast<Player*>(reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Get(entityPlayer));
 
 	// Get the players position and then set the enemies target to that

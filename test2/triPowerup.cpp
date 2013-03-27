@@ -14,6 +14,6 @@ triPowerUp::~triPowerUp()
 
 void triPowerUp::onPickup(Entity* object)
 {
-	reinterpret_cast<Player*>(object)->triShot = true;
+	//reinterpret_cast<Player*>(object)->triShot = true;
 }
 

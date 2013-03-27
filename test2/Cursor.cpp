@@ -2,7 +2,7 @@
 
 #include "Application.h"
 
-Cursor::Cursor(GameState *state) : Entity(state)
+Cursor::Cursor(GameState *state) : Entity(state, false)
 { 
 	Load(state->getApp()->gettextureManager().Get("Content/aim.png"));
 	name =  entityCursor;

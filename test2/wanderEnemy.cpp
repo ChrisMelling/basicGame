@@ -9,16 +9,13 @@
 #include "trailParticle.h"
 #define pi 3.14159265
 
-wanderEnemy::wanderEnemy(float Speed, float x, float y, GameState *state) : Entity(state)
+wanderEnemy::wanderEnemy(float Speed, float x, float y, GameState *state) : Entity(state, true, entityName::entityEnemy, Speed)
 { 
 	Load(state->getApp()->gettextureManager().Get("Content/blueorb.png"));
-	name = entityEnemy;
-	
+
 	pointValue = 5;
-	speed = Speed;
 	GetSprite().setScale(0.5f,0.5f);
 	GetSprite().setPosition(x,y);
-	collidable = true;
 
 	float radians = atan2((float)random_number(-1, 1),random_number(-1, 1));
 	double degrees = (radians/pi) * 180;
@@ -73,7 +70,7 @@ void wanderEnemy::seek(float frametime)
 
 void wanderEnemy::onDeath()
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new blueParticle(GetSprite().getPosition().x,GetSprite().getPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
 	}

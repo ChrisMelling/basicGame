@@ -25,10 +25,7 @@ public:
 	void onDeath();
 	void Fire();
 
-	bool triShot;
-	bool rapidFire;
 	int controllerIndex;
-	sf::Color _colour;
 
 	sf::Music Music1;
 
@@ -36,18 +33,22 @@ public:
 protected:
 
 private:
+	int score;
 	int health;
 	int xp;
 	int rank;
+	float bulletSpeed;
+	bool triShot;
+	bool rapidFire;
+	sf::Color _colour;
+
 	sf::Clock clock;
 	sf::Clock clock2;
 
 	sf::Clock tri;
 	sf::Clock rapid;
 
-	int score;
 	float rotation;
-	float bulletSpeed;
 
 	int index;
 };

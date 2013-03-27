@@ -3,15 +3,12 @@
 
 #include "Application.h"
 
-Bullet::Bullet(float Speed, float x, float y, float rotation,GameState *state) : Entity(state)
+Bullet::Bullet(float Speed, float x, float y, float rotation,GameState *state) : Entity(state, true, entityName::entityBullet, Speed)
 { 
 	Load(state->getApp()->gettextureManager().Get("Content/ball.png"));
 	SetPosition(x,y);
 	GetSprite().setRotation(rotation);
-	name =  entityBullet;
-	speed = Speed;
 	GetSprite().setScale(0.5f,0.5f);
-	collidable = true;
 }
 
 Bullet::~Bullet()

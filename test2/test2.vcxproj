@@ -103,7 +103,6 @@
     <ClCompile Include="redEnemy.cpp" />
     <ClCompile Include="redParticle.cpp" />
     <ClCompile Include="StateManager.cpp" />
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="trailParticle.cpp" />
     <ClCompile Include="triPowerup.cpp" />
@@ -117,6 +116,7 @@
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="forward.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="gameoverState.h" />
@@ -131,6 +131,7 @@
     <ClInclude Include="Quadtree.h" />
     <ClInclude Include="redEnemy.h" />
     <ClInclude Include="redParticle.h" />
+    <ClInclude Include="Resources.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="textureManager.h" />
     <ClInclude Include="trailParticle.h" />

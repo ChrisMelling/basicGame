@@ -18,12 +18,14 @@ void GameObjectManager::Add(Entity* gameObject)
 {
 	gameObject->setID(ID);
 	_gameObjects.insert(std::pair<int,Entity*>(ID,gameObject));
+
+
 	ID++;
 }
 
 void GameObjectManager::Remove(int ID)
 {
-	std::map<int, Entity*>::iterator results = _gameObjects.find(ID);
+	auto results = _gameObjects.find(ID);
 	if(results != _gameObjects.end() )
 	{
 		delete results->second;
@@ -35,7 +37,7 @@ Entity * GameObjectManager::Get(Entity::entityName name) const
 {
 	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end(); itr++)
 	{
-		if(itr->second->name == name)
+		if(itr->second->getEntityName() == name)
 		{
 			return itr->second;
 		}
@@ -54,7 +56,7 @@ void GameObjectManager::getGroup(Entity::entityName name, std::map<int, Entity*>
  
 	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end(); itr++)
 	{
-        if(itr->second->name == name)
+        if(itr->second->getEntityName() == name)
         {
             list.insert(std::pair<int,Entity*>(itr->second->getID(),itr->second));
         }
@@ -69,6 +71,7 @@ int GameObjectManager::getObjectCount() const
 
 void GameObjectManager::drawAll(sf::RenderWindow& renderWindow)
 {
+
 	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end(); itr++)
 	{
 		itr->second->Draw(renderWindow);
@@ -97,7 +100,7 @@ void GameObjectManager::updateAll(float frametime)
 	{
 		Entity* object = x->second;
 
-		if(object->collidable)
+		if(object->isCollidable())
 		{
 			vector<Entity*> returnObjects = tree->GetObjectsAt(object->GetPosition().x, object->GetPosition().y );		
 

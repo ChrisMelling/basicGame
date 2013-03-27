@@ -2,7 +2,7 @@
 
 #include "Application.h"
 
-Levelup::Levelup(GameState *state,float x, float y) : Entity(state)
+Levelup::Levelup(GameState *state,float x, float y) : Entity(state,true)
 { 
 	Load(state->getApp()->gettextureManager().Get("Content/levelup.png"));
 	name =  entityCursor;
