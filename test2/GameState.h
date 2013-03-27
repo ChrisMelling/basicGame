@@ -20,7 +20,6 @@ class GameState
 	~GameState();
 
 	GameObjectManager						_props;
-
 	GameObjectManager						_actors;
 
 	virtual void							Init();

@@ -25,50 +25,17 @@ void MainGame::Init()
 	addEntity(new Player(this));
 	fps = new FPS();
 
-	texture.create(2000,2000);
-
 	camera.setSize(getApp()->GetWidth(), getApp()->GetHeight());
-	
 	camera.zoom(0.8);
 
-	healthBar.setPosition(0.05f * getApp()->GetWidth() + 300, 15);
-	healthBar.setOutlineColor(sf::Color(18,0,211));
-	healthBar.setFillColor(sf::Color(148,0,211));
-	healthBar.setOutlineThickness(1);
-
-	xpBar.setPosition(0.5f * getApp()->GetWidth() - 100, 15);
-	xpBar.setFillColor(sf::Color(147,112,219));
-
-	score = 0;
-	time = 30;
 	wave = 1;
 	index = 0;
-	roundWave = 300;
-	killed = 0;
 
-
-
-	for (int i = 0; i < 500; i++)
+	for (int i = 0; i < 2000; i++)
 	{		
 		addEntity(new wanderEnemy(20.0f + wave * 10, random_number(0, getApp()->GetWidth()),random_number(0, getApp()->GetHeight()),this));
 	}
 
-	//texture.display();
-	//sf::RectangleShape rectangle;
-	//rectangle.setSize(sf::Vector2f(20,20));
-	//rectangle.setOutlineColor(sf::Color(255,255,255,20));
-	//rectangle.setOutlineThickness(1);
-
-	//for(int i = 0; i < getApp()->GetWidth() / 20; i++)
- //   {
-	//	for(int j = 0; j < getApp()->GetHeight() / 20; j++)
- //       {  
-	//		rectangle.setFillColor(sf::Color(0, 0, 0));		
- //           rectangle.setPosition(i * 20.0f, j * 20.0f);
-	//		texture.draw(rectangle);
- //       }
- //   }
-	//_sprite.setTexture(texture.getTexture());
 
 	loaded = true;
 }
@@ -104,15 +71,28 @@ void MainGame::Update(float elapsedTime)
 		powerupTimer.restart();
 	}
 
-	std::stringstream p3;
-	p3 << fps->GetFPS();
-	sf::String temp3("FPS : ");
-	timer.setString(temp3 + p3.str().c_str());
-	timer.setCharacterSize(9);
-	timer.setPosition(0, 0);
-	timer.setCharacterSize(20);
+	std::stringstream p1;
+	p1 << fps->GetFPS();
+	sf::String temp1("Fps : ");
+	fpsText.setString(temp1 + p1.str().c_str());
+	fpsText.setCharacterSize(12);
+	fpsText.setPosition(0, 0);
 
-	healthBar.setSize(sf::Vector2f(roundWave,15));
+	std::stringstream p2;
+	p2 << _actors.getObjectCount();
+	sf::String temp2("Actors : ");
+	_propsText.setString(temp2 + p2.str().c_str());
+	_propsText.setCharacterSize(12);
+	_propsText.setPosition(0, 14);
+
+	std::stringstream p3;
+	p3 << _props.getObjectCount();
+	sf::String temp3("Props : ");
+	_actorsText.setString(temp3 + p3.str().c_str());
+	_actorsText.setCharacterSize(12);
+	_actorsText.setPosition(0, 28);
+
+
 
 	if(clock2.getElapsedTime().asSeconds() > 15)
 	{
@@ -127,12 +107,14 @@ void MainGame::Update(float elapsedTime)
 
 void MainGame::Render(sf::RenderWindow& renderWindow)
 {
-	getApp()->getWindow().setView(getApp()->getWindow().getDefaultView());
-	renderWindow.draw(timer);
-
-	getApp()->getWindow().setView(camera);
+	SetView(camera);
 	_actors.drawAll(renderWindow);
 	_props.drawAll(renderWindow);
+
+	SetDefaultView();
+	renderWindow.draw(fpsText);
+	renderWindow.draw(_propsText);
+	renderWindow.draw(_actorsText);
 }
 
 float MainGame::random_number(float low, float high)
@@ -202,7 +184,7 @@ void MainGame::nextWave()
 	wave++;
 
 
-	for (int i = 0; i < 500 + wave * 20; i++)
+	for (int i = 0; i < 2000 + wave * 20; i++)
 	{		
 		addEntity(new wanderEnemy(20.0f + wave * 10.0f, random_number(0.0f, getApp()->GetWidth()),random_number(0.0f, getApp()->GetHeight()),this));
 	}

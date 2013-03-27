@@ -10,7 +10,7 @@ blueParticle::blueParticle(float x, float y, float dirx, float diry,GameState *s
 
 	SetPosition(x,y);
 
-	life_time_ = random_number( 0.2f, 0.5f );
+	life_time_ = random_number( 0.4f, 0.1f );
 
 	direction = sf::Vector2f(dirx,diry);
 

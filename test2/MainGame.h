@@ -10,10 +10,11 @@
 class MainGame : public GameState
 {
 private:
-	 sf::Font MyFont;
-	 sf::Text textScore;
-	 sf::Text waveNumner;
-	 sf::Text timer;
+	 sf::Text fpsText;
+	 sf::Text _propsText;
+	 sf::Text _actorsText;
+
+
 	 sf::Clock clock;
 	 sf::Clock clock2;
 	 sf::Clock clock3;
@@ -27,7 +28,6 @@ private:
 	 float time;
 	 int index;
 	 float roundWave;
-
 public:
 	sf::View camera;
 	MainGame(Application *App);
@@ -36,6 +36,7 @@ public:
 	void Update(float elapsedTime);
 	void Render(sf::RenderWindow& renderWindow);
 	void Enable();
+
 	float random_number(float low, float high);
 	sf::Vector2f getRandomPosition();
 	void LoadMap();
