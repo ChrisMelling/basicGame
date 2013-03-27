@@ -48,7 +48,7 @@ void MainGame::Init()
 
 
 
-	for (int i = 0; i < 3000; i++)
+	for (int i = 0; i < 500; i++)
 	{		
 		addEntity(new wanderEnemy(20.0f + wave * 10, random_number(0, getApp()->GetWidth()),random_number(0, getApp()->GetHeight()),this));
 	}
@@ -89,7 +89,7 @@ void MainGame::Update(float elapsedTime)
 	if(clock.getElapsedTime().asMilliseconds() > 300)
 	{
 		sf::Vector2f temp = getRandomPosition();
-		_gameObjectManager.Add(new redEnemy(50.0f + wave * 10,temp.x,temp.y,this));
+		addEntity(new redEnemy(50.0f + wave * 10,temp.x,temp.y,this));
 		clock.restart();
 	}
 
@@ -134,12 +134,6 @@ void MainGame::Render(sf::RenderWindow& renderWindow)
 	_actors.drawAll(renderWindow);
 	_props.drawAll(renderWindow);
 }
-
-GameObjectManager& MainGame::getGameObjectManager()
-{
-	return _gameObjectManager;
-}
-
 
 float MainGame::random_number(float low, float high)
 {
@@ -208,7 +202,7 @@ void MainGame::nextWave()
 	wave++;
 
 
-	for (int i = 0; i < 3000 + wave * 20; i++)
+	for (int i = 0; i < 500 + wave * 20; i++)
 	{		
 		addEntity(new wanderEnemy(20.0f + wave * 10.0f, random_number(0.0f, getApp()->GetWidth()),random_number(0.0f, getApp()->GetHeight()),this));
 	}

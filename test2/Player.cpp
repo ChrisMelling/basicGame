@@ -39,7 +39,7 @@ void Player::Update(float frametime)
 {
 	if(clock2.getElapsedTime().asMilliseconds() > 20)
 	{
-		reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new trailParticle(_colour,GetPosition().x,GetPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
+		_state->addEntity(new trailParticle(_colour,GetPosition().x,GetPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
 			
 		clock2.restart();
 	}
@@ -143,9 +143,9 @@ void Player::Fire()
 	{
 		if(clock.getElapsedTime().asMilliseconds() > 100)
 		{
-			reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation() - 5,_state));
-			reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation(),_state));
-			reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation() + 5,_state));
+			_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation() - 5,_state));
+			_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation(),_state));
+			_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation() + 5,_state));
 			clock.restart();
 		}
 	}
@@ -153,9 +153,9 @@ void Player::Fire()
 	{
 		if(clock.getElapsedTime().asMilliseconds() > 150)
 		{
-			reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation() - 5,_state));
-			reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation(),_state));
-			reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation() + 5,_state));
+			_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation() - 5,_state));
+			_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation(),_state));
+			_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation() + 5,_state));
 			clock.restart();
 		}
 	}
@@ -163,7 +163,7 @@ void Player::Fire()
 	{
 		if(clock.getElapsedTime().asMilliseconds() > 100)
 		{
-			reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation(),_state));
+			_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation(),_state));
 			clock.restart();
 		}
 	}
@@ -171,7 +171,7 @@ void Player::Fire()
 	{
 		if(clock.getElapsedTime().asMilliseconds() > 300)
 		{
-			for(int i = 0; i < 360; i += 5)
+			for(int i = 0; i < 360; i += 10)
 			{
 				_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,i,_state));	
 			}

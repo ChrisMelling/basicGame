@@ -10,7 +10,6 @@
 class MainGame : public GameState
 {
 private:
-	 GameObjectManager _gameObjectManager;
 	 sf::Font MyFont;
 	 sf::Text textScore;
 	 sf::Text waveNumner;
@@ -37,7 +36,6 @@ public:
 	void Update(float elapsedTime);
 	void Render(sf::RenderWindow& renderWindow);
 	void Enable();
-	GameObjectManager& getGameObjectManager();
 	float random_number(float low, float high);
 	sf::Vector2f getRandomPosition();
 	void LoadMap();

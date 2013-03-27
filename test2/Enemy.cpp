@@ -24,7 +24,7 @@ Enemy::~Enemy()
 
 void Enemy::Update(float frametime)
 {\
-	Player* _Player = reinterpret_cast<Player*>(reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Get(entityPlayer));
+	Player* _Player = reinterpret_cast<Player*>(_state->_actors.Get(entityPlayer));
 
 	// Get the players position and then set the enemies target to that
 	if(_Player != NULL)
@@ -74,6 +74,6 @@ void Enemy::onDeath()
 {
 	for (int i = 0; i < 10; i++)
 	{
-		reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new blueParticle(GetSprite().getPosition().x,GetSprite().getPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
+		_state->addEntity(new blueParticle(GetSprite().getPosition().x,GetSprite().getPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
 	}
 }

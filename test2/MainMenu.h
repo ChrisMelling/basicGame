@@ -22,7 +22,6 @@ private:
 	sf::Sprite _mouse;
 	sf::Texture _texture;
 	sf::Clock clock;
-	GameObjectManager _gameObjectManager;
 };
 
 #endif
