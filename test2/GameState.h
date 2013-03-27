@@ -2,7 +2,7 @@
 #define GAMESTATE_H_
 
 #include <SFML/Graphics.hpp>
-
+#include "GameObjectManager.h"
 class Application;
 class Entity;
 
@@ -19,6 +19,10 @@ class GameState
 	GameState(Statename state, Application* app);
 	~GameState();
 
+	GameObjectManager						_props;
+
+	GameObjectManager						_actors;
+
 	virtual void							Init();
 	virtual void							Update(float elapsedTime);
 	virtual void							Render(sf::RenderWindow& renderWindow);
@@ -31,7 +35,7 @@ class GameState
 	void 									SetViewOn( Entity* TargetActor );
 	void 									SetDefaultView();
 	const sf::View & 						GetDefaultView();
-	
+	void									addEntity(Entity* object);
 	bool									getLoaded();
 	void									toggleActive();
 	bool									getActive();

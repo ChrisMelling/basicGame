@@ -95,3 +95,12 @@ int GameState::GetWindowHeight()
 {
 	return getApp()->GetHeight();
 }
+
+void GameState::addEntity(Entity* object)
+{
+	if(object->isCollidable()){
+		_actors.Add(object);
+	} else {
+		_props.Add(object);
+	}
+}

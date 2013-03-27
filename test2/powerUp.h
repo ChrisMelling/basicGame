@@ -13,4 +13,8 @@ protected:
 
 private:
 	float timePassed;
+	sf::Sound sound;
+	sf::SoundBuffer buffer;
+	sf::Sound pickupSound;
+	sf::SoundBuffer pickupBuffer;
 };

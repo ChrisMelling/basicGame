@@ -2,7 +2,6 @@
 #define MAINGAME_H_
 
 #include "GameState.h"
-#include "GameObjectManager.h"
 #include "textureManager.h"
 #include "Player.h"
 #include "Cursor.h"

@@ -22,8 +22,7 @@ MainGame::~MainGame()
 
 void MainGame::Init()
 {
-	_gameObjectManager.Add(new Player(this));
-
+	addEntity(new Player(this));
 	fps = new FPS();
 
 	texture.create(2000,2000);
@@ -49,9 +48,9 @@ void MainGame::Init()
 
 
 
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 3000; i++)
 	{		
-		_gameObjectManager.Add(new wanderEnemy(20.0f + wave * 10, random_number(0, getApp()->GetWidth()),random_number(0, getApp()->GetHeight()),this));
+		addEntity(new wanderEnemy(20.0f + wave * 10, random_number(0, getApp()->GetWidth()),random_number(0, getApp()->GetHeight()),this));
 	}
 
 	//texture.display();
@@ -99,8 +98,7 @@ void MainGame::Update(float elapsedTime)
 		// Generate a random number
 		float rand = random_number(0,100);
 
-
-			getGameObjectManager().Add(new triPowerUp(this,random_number(100, getApp()->GetWidth() - 100),random_number(100, getApp()->GetHeight()) - 100));
+		addEntity(new triPowerUp(this,random_number(100, getApp()->GetWidth() - 100),random_number(100, getApp()->GetHeight()) - 100));
 
 		std::cout << "powerup added!" << "\n";
 		powerupTimer.restart();
@@ -114,15 +112,6 @@ void MainGame::Update(float elapsedTime)
 	timer.setPosition(0, 0);
 	timer.setCharacterSize(20);
 
-	Player* _player = reinterpret_cast<Player*>(_gameObjectManager.Get(Entity::entityName::entityPlayer));
-
-	if(_player->getHealth() <= 0)
-	{
-		app->changeState(GameState::Statename::gameoverState);
-	}
-
-	camera.setCenter(_player->GetPosition());
-
 	healthBar.setSize(sf::Vector2f(roundWave,15));
 
 	if(clock2.getElapsedTime().asSeconds() > 15)
@@ -131,8 +120,8 @@ void MainGame::Update(float elapsedTime)
 		clock2.restart();
 	}
 
-	_gameObjectManager.updateAll(elapsedTime);
-
+	_actors.updateAll(elapsedTime);
+	_props.updateAll(elapsedTime);
 }
 
 
@@ -142,7 +131,8 @@ void MainGame::Render(sf::RenderWindow& renderWindow)
 	renderWindow.draw(timer);
 
 	getApp()->getWindow().setView(camera);
-	_gameObjectManager.drawAll(renderWindow);
+	_actors.drawAll(renderWindow);
+	_props.drawAll(renderWindow);
 }
 
 GameObjectManager& MainGame::getGameObjectManager()
@@ -204,22 +194,22 @@ void MainGame::nextWave()
 {
 	// Get an array containing all active Enemy in the game
 	std::map<int, Entity*> tempArray;
-	getGameObjectManager().getGroup(Entity::entityName::entityEnemy, tempArray);
+	_actors.getGroup(Entity::entityName::entityEnemy, tempArray);
 
 	//Kill all currently alive enemy
 	std::map<int, Entity*>::const_iterator itr = tempArray.begin();
 
 	while(itr != tempArray.end())
 	{
-		itr->second->toggleDeath();
+		itr->second->alive = false;
 		itr++;
 	}
 
 	wave++;
 
 
-	for (int i = 0; i < 1000 + wave * 20; i++)
+	for (int i = 0; i < 3000 + wave * 20; i++)
 	{		
-		_gameObjectManager.Add(new wanderEnemy(20.0f + wave * 10.0f, random_number(0.0f, getApp()->GetWidth()),random_number(0.0f, getApp()->GetHeight()),this));
+		addEntity(new wanderEnemy(20.0f + wave * 10.0f, random_number(0.0f, getApp()->GetWidth()),random_number(0.0f, getApp()->GetHeight()),this));
 	}
 }

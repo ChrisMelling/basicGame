@@ -82,7 +82,7 @@ void GameObjectManager::updateAll(float frametime)
 {	
 	checkAlive();
 
-	std::cout << getObjectCount() << "\n";
+	//std::cout << getObjectCount() << "\n";
 
 	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end(); itr++)
 	{

@@ -70,8 +70,8 @@ void wanderEnemy::seek(float frametime)
 
 void wanderEnemy::onDeath()
 {
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new blueParticle(GetSprite().getPosition().x,GetSprite().getPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
+		_state->addEntity(new blueParticle(GetSprite().getPosition().x,GetSprite().getPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
 	}
 }

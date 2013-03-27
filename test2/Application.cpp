@@ -29,7 +29,7 @@ void Application::Create( std::string title, float width, float height, int bpp,
 		_window.create( sf::VideoMode( (int)width, (int)height, bpp ), title_, sf::Style::Close);
 
 	b_running_ = true;
-	_window.setFramerateLimit(60);
+	//_window.setFramerateLimit(60);
 	setColour(0,0,0,0);
 
 	Init();
@@ -94,8 +94,8 @@ bool Application::isRunning()
 float Application::getElapsed()
 {
 	sf::Time _time = _clock.getElapsedTime();
-	_clock.restart();
 	float frametime = _time.asSeconds();	
+	_clock.restart();
 	return frametime;
 }
 

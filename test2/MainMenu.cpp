@@ -1,5 +1,4 @@
 #include "MainMenu.h"
-
 #include "blueParticle.h"
 #include "redParticle.h"
 #include "Application.h"
@@ -64,18 +63,20 @@ void MainMenu::Update(float elapsedTime)
 
 		for (int i = 0; i < 30; i++)
 		{
-			_gameObjectManager.Add(new blueParticle(temp.x,temp.y,random_number(-1, 1),random_number(-1, 1),this));
-			_gameObjectManager.Add(new redParticle(temp2.x,temp2.y,random_number(-1, 1),random_number(-1, 1),this));
+			addEntity(new blueParticle(temp.x,temp.y,random_number(-1, 1),random_number(-1, 1),this));
+			addEntity(new redParticle(temp2.x,temp2.y,random_number(-1, 1),random_number(-1, 1),this));
 		}
 		clock.restart();
 	}
 
-	_gameObjectManager.updateAll(elapsedTime);
+	_actors.updateAll(elapsedTime);
+	_props.updateAll(elapsedTime);
 }
 
 void MainMenu::Render(sf::RenderWindow& renderWindow)
 {
-	_gameObjectManager.drawAll(renderWindow);
+	_actors.drawAll(renderWindow);
+	_props.drawAll(renderWindow);
 	//renderWindow.draw(_sprite);
 	//renderWindow.draw(_xbox);
 	renderWindow.draw(_mouse);

@@ -22,13 +22,11 @@ Player::Player(GameState *state)
 
 	index = 0;
 
-	
-	if (!Music1.openFromFile("Content/turretshot.wav"))
-	{
-		// Error...
-	}
+    buffer.loadFromFile("Content/turretshot.wav");
 
-	Music1.setVolume(20.0f);
+	sound.setBuffer(buffer);
+
+	sound.setVolume(20.0f);
 
 }
 
@@ -166,7 +164,6 @@ void Player::Fire()
 		if(clock.getElapsedTime().asMilliseconds() > 100)
 		{
 			reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation(),_state));
-			Music1.play();
 			clock.restart();
 		}
 	}
@@ -174,11 +171,11 @@ void Player::Fire()
 	{
 		if(clock.getElapsedTime().asMilliseconds() > 300)
 		{
-			for(int i = 0; i < 360; i += 10)
+			for(int i = 0; i < 360; i += 5)
 			{
-				reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,i,_state));	
+				_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,i,_state));	
 			}
-			Music1.play();
+			sound.play();
 			clock.restart();
 		}
 	}

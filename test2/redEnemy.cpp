@@ -21,6 +21,6 @@ void redEnemy::onDeath()
 {
 	for (int i = 0; i < 10; i++)
 	{
-		reinterpret_cast<MainGame*>(_state)->getGameObjectManager().Add(new redParticle(GetSprite().getPosition().x,GetSprite().getPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
+		_state->addEntity(new redParticle(GetSprite().getPosition().x,GetSprite().getPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
 	}
 }

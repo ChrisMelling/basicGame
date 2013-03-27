@@ -134,10 +134,10 @@ void Entity::onDeath(){}
 
 int Entity::getWindowHeight()
 {
-	return _state->GetWindowWidth();
+	return _state->GetWindowHeight();
 }
 
 int Entity::getWindowWidth()
 {
-	return _state->GetWindowHeight();
+	return _state->GetWindowWidth();
 }

@@ -27,8 +27,8 @@ public:
 
 	int controllerIndex;
 
-	sf::Music Music1;
-
+	sf::Sound sound;
+	sf::SoundBuffer buffer;
 	
 protected:
 
