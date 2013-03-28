@@ -1,9 +1,8 @@
 #ifndef MAINMENU_H_
 #define MAINMENU_H_
 
-
+#include"forward.h"
 #include "GameState.h"
-#include "GameObjectManager.h"
 
 class MainMenu : public GameState
 {

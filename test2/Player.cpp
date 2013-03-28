@@ -13,7 +13,7 @@ Player::Player(GameState *state)
 { 
 	Load(state->getApp()->gettextureManager().Get("Content/zombie.png"));
 
-	SetPosition(getWindowWidth() / 2, getWindowHeight() / 2);
+	SetPosition((int)getWindowWidth() / 2, (int)getWindowHeight() / 2);
 
 	GetSprite().setScale(0.5f,0.5f);
 	GetSprite().setColor(_colour);
@@ -27,7 +27,6 @@ Player::Player(GameState *state)
 	sound.setBuffer(buffer);
 
 	sound.setVolume(20.0f);
-
 }
 
 Player::~Player()
@@ -91,7 +90,6 @@ void Player::Controls(float frametime)
 
 	if(_state->getApp()->keyboardControl == true)
 	{
-		speed = 200.0f; // Speed of the Player
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){direction.x -= 1.0f;}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){direction.x += 1.0f;}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){direction.y -= 1.0f;}

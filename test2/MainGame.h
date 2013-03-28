@@ -1,11 +1,8 @@
 #ifndef MAINGAME_H_
 #define MAINGAME_H_
 
+#include"forward.h"
 #include "GameState.h"
-#include "textureManager.h"
-#include "Player.h"
-#include "Cursor.h"
-#include "FPS.h"
 
 class MainGame : public GameState
 {

@@ -1,14 +1,13 @@
 #include "MainGame.h"
-#include <sstream>
 #include "Application.h"
 #include "trailParticle.h"
 #include "blueEnemy.h"
 #include "redEnemy.h"
 #include "wanderEnemy.h"
 #include "triPowerup.h"
-#include"powerupRapid.h"
-#include <iostream>
-
+#include "powerupRapid.h"
+#include "FPS.h"
+#include "Player.h"
 
 MainGame::MainGame(Application *App) : GameState(MainGameState, App)
 {
@@ -31,7 +30,7 @@ void MainGame::Init()
 	wave = 1;
 	index = 0;
 
-	for (int i = 0; i < 2000; i++)
+	for (int i = 0; i < 1000; i++)
 	{		
 		addEntity(new wanderEnemy(20.0f + wave * 10, random_number(0, getApp()->GetWidth()),random_number(0, getApp()->GetHeight()),this));
 	}
@@ -184,7 +183,7 @@ void MainGame::nextWave()
 	wave++;
 
 
-	for (int i = 0; i < 2000 + wave * 20; i++)
+	for (int i = 0; i < 1000 + wave * 20; i++)
 	{		
 		addEntity(new wanderEnemy(20.0f + wave * 10.0f, random_number(0.0f, getApp()->GetWidth()),random_number(0.0f, getApp()->GetHeight()),this));
 	}
