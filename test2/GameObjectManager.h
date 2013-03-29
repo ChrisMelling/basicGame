@@ -24,7 +24,6 @@ public:
 	void checkAlive();
 	std::map<int, Entity*> _gameObjects;
 
-
 	Quadtree *tree;
 private:
 

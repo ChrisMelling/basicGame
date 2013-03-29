@@ -11,9 +11,9 @@
 Player::Player(GameState *state) 
 	: Entity(state,true,entityName::entityPlayer, 200), score(0), health(100), xp(0), rank(0), bulletSpeed(600),triShot(false),rapidFire(false),_colour(sf::Color(128,255,86,255))
 { 
-	Load(state->getApp()->gettextureManager().Get("Content/zombie.png"));
+	Load(state->getApp()->gettextureManager().Get("Content/bubble.png"));
 
-	SetPosition((int)getWindowWidth() / 2, (int)getWindowHeight() / 2);
+	SetPosition(getWindowWidth() / 2, getWindowHeight() / 2);
 
 	GetSprite().setScale(0.5f,0.5f);
 	GetSprite().setColor(_colour);
@@ -169,7 +169,7 @@ void Player::Fire()
 	{
 		if(clock.getElapsedTime().asMilliseconds() > 300)
 		{
-			for(int i = 0; i < 360; i += 10)
+			for(int i = 0; i < 360; i += 5)
 			{
 				_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,i,_state));	
 			}

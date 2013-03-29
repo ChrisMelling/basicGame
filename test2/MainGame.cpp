@@ -30,9 +30,9 @@ void MainGame::Init()
 	wave = 1;
 	index = 0;
 
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 3000; i++)
 	{		
-		addEntity(new wanderEnemy(20.0f + wave * 10, random_number(0, getApp()->GetWidth()),random_number(0, getApp()->GetHeight()),this));
+		addEntity(new wanderEnemy(20.0f + wave * 10, random_number(0, GetWindowWidth()),random_number(0,GetWindowHeight()),this));
 	}
 
 
@@ -64,7 +64,7 @@ void MainGame::Update(float elapsedTime)
 		// Generate a random number
 		float rand = random_number(0,100);
 
-		addEntity(new triPowerUp(this,random_number(100, getApp()->GetWidth() - 100),random_number(100, getApp()->GetHeight()) - 100));
+		addEntity(new triPowerUp(this,random_number(100, GetWindowWidth() - 100),random_number(100, GetWindowHeight()) - 100));
 
 		std::cout << "powerup added!" << "\n";
 		powerupTimer.restart();
@@ -106,7 +106,7 @@ void MainGame::Update(float elapsedTime)
 
 void MainGame::Render(sf::RenderWindow& renderWindow)
 {
-	SetView(camera);
+	//SetView(camera);
 	_actors.drawAll(renderWindow);
 	_props.drawAll(renderWindow);
 
@@ -183,8 +183,8 @@ void MainGame::nextWave()
 	wave++;
 
 
-	for (int i = 0; i < 1000 + wave * 20; i++)
+	for (int i = 0; i < 3000 + wave * 20; i++)
 	{		
-		addEntity(new wanderEnemy(20.0f + wave * 10.0f, random_number(0.0f, getApp()->GetWidth()),random_number(0.0f, getApp()->GetHeight()),this));
+		addEntity(new wanderEnemy(20.0f + wave * 10.0f, random_number(0.0f, GetWindowWidth()),random_number(0.0f, GetWindowHeight()),this));
 	}
 }

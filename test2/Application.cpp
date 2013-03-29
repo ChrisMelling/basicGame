@@ -46,6 +46,8 @@ void Application::Init()
 	_textureManager.Add("Content/levelup.png");
 	_textureManager.Add("Content/health.png");
 	_textureManager.Add("Content/particle.png");
+	_textureManager.Add("Content/bubble.png");
+
 
 	_stateManager = new StateManager();
 

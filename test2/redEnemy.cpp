@@ -19,7 +19,7 @@ redEnemy::~redEnemy()
 
 void redEnemy::onDeath()
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		_state->addEntity(new redParticle(GetSprite().getPosition().x,GetSprite().getPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
 	}

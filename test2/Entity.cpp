@@ -51,10 +51,14 @@ void Entity::Load(sf::Texture &texture)
 
 void Entity::Draw(sf::RenderWindow &renderWindow)
 {
-	if(alive)
-	{
-		renderWindow.draw(_sprite);	
-	}
+	MainGame * game = reinterpret_cast<MainGame*>(_state);
+
+
+		{
+			renderWindow.draw(_sprite);	
+		}
+	
+
 }
 
 void Entity::Touch(Entity *other){}
