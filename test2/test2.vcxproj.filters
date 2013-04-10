@@ -16,15 +16,6 @@
     <Filter Include="Source Files\Entities">
       <UniqueIdentifier>{84c659e7-a30f-449f-868f-743e203201f7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entities\Particles">
-      <UniqueIdentifier>{862309d2-e5c4-42b3-a85d-0400170b5957}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entities\Actors">
-      <UniqueIdentifier>{c1da63e9-b579-4e15-9ee2-0bdebcb6af68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entities\Powerups">
-      <UniqueIdentifier>{a1f30ad8-358a-4829-857d-63eb0eccb47b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameStates">
       <UniqueIdentifier>{9f2571d5-a597-4f09-afb9-f2ecf664772b}</UniqueIdentifier>
     </Filter>
@@ -33,6 +24,15 @@
     </Filter>
     <Filter Include="Source Files\Managers">
       <UniqueIdentifier>{0322ffa7-59fb-4aff-97c0-0cd295f97d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Actors">
+      <UniqueIdentifier>{c1da63e9-b579-4e15-9ee2-0bdebcb6af68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Powerups">
+      <UniqueIdentifier>{a1f30ad8-358a-4829-857d-63eb0eccb47b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Particles">
+      <UniqueIdentifier>{862309d2-e5c4-42b3-a85d-0400170b5957}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -71,7 +71,6 @@ int GameObjectManager::getObjectCount() const
 
 void GameObjectManager::drawAll(sf::RenderWindow& renderWindow)
 {
-
 	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end(); itr++)
 	{
 		itr->second->Draw(renderWindow);

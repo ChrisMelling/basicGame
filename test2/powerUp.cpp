@@ -19,7 +19,9 @@ powerUp::powerUp(GameState *state,float x, float y) : Entity(state, true)
 
 	pickupSound.setBuffer(pickupBuffer);
 
-	pickupSound.setVolume(20.0f);
+	pickupSound.setVolume(60.0f);
+
+
 }
 
 powerUp::~powerUp()
@@ -40,8 +42,7 @@ void powerUp::Update(float frametime)
 void powerUp::Touch(Entity *Other)
 {
 	if(Other->getEntityName() == entityPlayer)
-	{
-		pickupSound.play();
+	{	
 		onPickup(Other);
 		alive = false;
 	}

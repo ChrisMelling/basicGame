@@ -30,7 +30,7 @@ void MainGame::Init()
 	wave = 1;
 	index = 0;
 
-	for (int i = 0; i < 3000; i++)
+	for (int i = 0; i < 1000; i++)
 	{		
 		addEntity(new wanderEnemy(20.0f + wave * 10, random_number(0, GetWindowWidth()),random_number(0,GetWindowHeight()),this));
 	}
@@ -183,7 +183,7 @@ void MainGame::nextWave()
 	wave++;
 
 
-	for (int i = 0; i < 3000 + wave * 20; i++)
+	for (int i = 0; i < 1000 + wave * 20; i++)
 	{		
 		addEntity(new wanderEnemy(20.0f + wave * 10.0f, random_number(0.0f, GetWindowWidth()),random_number(0.0f, GetWindowHeight()),this));
 	}

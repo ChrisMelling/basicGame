@@ -12,6 +12,7 @@ public:
 protected:
 
 private:
+	float pickupTime;
 	float timePassed;
 	sf::Sound sound;
 	sf::SoundBuffer buffer;
