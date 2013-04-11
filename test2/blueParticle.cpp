@@ -6,15 +6,15 @@ blueParticle::blueParticle(float x, float y, float dirx, float diry,GameState *s
 {	
 	Load(state->getApp()->gettextureManager().Get("Content/particle.png"));
 
-	_colour = sf::Color(70,130,180,180);
+	_colour = sf::Color(139,137,137,180);
 
 	SetPosition(x,y);
 
-	life_time_ = random_number( 0.4f, 0.1f );
+	life_time_ = random_number( 0.08f, 0.3f );
 
 	direction = sf::Vector2f(dirx,diry);
 
-	speed = rand() % 90 + 150;     // v2 in the range 1 to 100
+	speed = rand() % 40 + 90;     // v2 in the range 1 to 100
 }
 
 blueParticle::~blueParticle()

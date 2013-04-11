@@ -27,6 +27,11 @@ Player::Player(GameState *state)
 	sound.setBuffer(buffer);
 
 	sound.setVolume(20.0f);
+
+    // init weapons
+    m_weapon.setOwner(this);
+    m_weapon.setPosition(GetPosition());
+
 }
 
 Player::~Player()
@@ -36,12 +41,12 @@ Player::~Player()
 
 void Player::Update(float frametime)
 {
-	if(clock2.getElapsedTime().asMilliseconds() > 20)
-	{
-		_state->addEntity(new trailParticle(_colour,GetPosition().x,GetPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
-			
-		clock2.restart();
-	}
+	//if(clock2.getElapsedTime().asMilliseconds() > 20)
+	//{
+	//	_state->addEntity(new trailParticle(_colour,GetPosition().x,GetPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
+	//		
+	//	clock2.restart();
+	//}
 
 
 	if(health > 0)
@@ -74,6 +79,8 @@ void Player::Update(float frametime)
 			rapidFire = false;
 		}
 	}
+
+	m_weapon.onUpdate(frametime);
 }
 
 void Player::Controls(float frametime)
@@ -97,7 +104,7 @@ void Player::Controls(float frametime)
 
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			Fire();
+			m_weapon.shoot(GetSprite().getRotation());
 		}
 	}
 
@@ -121,11 +128,9 @@ void Player::Controls(float frametime)
 
 		if(sf::Joystick::getAxisPosition(controllerIndex, sf::Joystick::Z) > 80)
 		{
-			Fire();
+			 m_weapon.shoot(0);
 		}
 	}
-
-
 
 	GetSprite().move(direction * speed * frametime);
 
@@ -169,10 +174,7 @@ void Player::Fire()
 	{
 		if(clock.getElapsedTime().asMilliseconds() > 300)
 		{
-			for(int i = 0; i < 360; i += 5)
-			{
-				_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,i,_state));	
-			}
+			_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation(),_state));
 			sound.play();
 			clock.restart();
 		}

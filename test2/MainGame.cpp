@@ -8,6 +8,8 @@
 #include "powerupRapid.h"
 #include "FPS.h"
 #include "Player.h"
+#include "Asteroid.h"
+#include "Math.h"
 
 MainGame::MainGame(Application *App) : GameState(MainGameState, App)
 {
@@ -30,9 +32,9 @@ void MainGame::Init()
 	wave = 1;
 	index = 0;
 
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 100; i++)
 	{		
-		addEntity(new wanderEnemy(20.0f + wave * 10, random_number(0, GetWindowWidth()),random_number(0,GetWindowHeight()),this));
+		addEntity(new Asteroid(sf::Vector2f(math::random(0, GetWindowWidth()),math::random(0, GetWindowHeight())),Asteroid::BIG,this));
 	}
 
 
@@ -52,23 +54,23 @@ void MainGame::Update(float elapsedTime)
 {		
 	fps->Update();
 
-	if(clock.getElapsedTime().asMilliseconds() > 300)
-	{
-		sf::Vector2f temp = getRandomPosition();
-		addEntity(new redEnemy(50.0f + wave * 10,temp.x,temp.y,this));
-		clock.restart();
-	}
+	//if(clock.getElapsedTime().asMilliseconds() > 300)
+	//{
+	//	sf::Vector2f temp = getRandomPosition();
+	//	addEntity(new redEnemy(50.0f + wave * 10,temp.x,temp.y,this));
+	//	clock.restart();
+	//}
 
-	if(powerupTimer.getElapsedTime().asSeconds() > 10)
-	{
-		// Generate a random number
-		float rand = random_number(0,100);
+	//if(powerupTimer.getElapsedTime().asSeconds() > 10)
+	//{
+	//	// Generate a random number
+	//	float rand = random_number(0,100);
 
-		addEntity(new triPowerUp(this,random_number(100, GetWindowWidth() - 100),random_number(100, GetWindowHeight()) - 100));
+	//	addEntity(new triPowerUp(this,random_number(100, GetWindowWidth() - 100),random_number(100, GetWindowHeight()) - 100));
 
-		std::cout << "powerup added!" << "\n";
-		powerupTimer.restart();
-	}
+	//	std::cout << "powerup added!" << "\n";
+	//	powerupTimer.restart();
+	//}
 
 	std::stringstream p1;
 	p1 << fps->GetFPS();
@@ -93,11 +95,11 @@ void MainGame::Update(float elapsedTime)
 
 
 
-	if(clock2.getElapsedTime().asSeconds() > 15)
-	{
-		nextWave();
-		clock2.restart();
-	}
+	//if(clock2.getElapsedTime().asSeconds() > 15)
+	//{
+	//	nextWave();
+	//	clock2.restart();
+	//}
 
 	_actors.updateAll(elapsedTime);
 	_props.updateAll(elapsedTime);

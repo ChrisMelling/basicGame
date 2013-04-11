@@ -7,6 +7,7 @@
 #include "blueParticle.h"
 #include "Application.h"
 #include "trailParticle.h"
+#include "Math.h"
 #define pi 3.14159265
 
 wanderEnemy::wanderEnemy(float Speed, float x, float y, GameState *state) : Entity(state, true, entityName::entityEnemy, Speed)
@@ -18,11 +19,12 @@ wanderEnemy::wanderEnemy(float Speed, float x, float y, GameState *state) : Enti
 	GetSprite().setPosition(x,y);
 
 	float radians = atan2((float)random_number(-1, 1),random_number(-1, 1));
-	double degrees = (radians/pi) * 180;
+
+	double degrees = math::to_deg(radians);
 
 	GetSprite().setRotation((float)degrees);
 
-	double radian = degrees * (pi / 180);
+	double radian =  math::to_rad(degrees);
 
 	direction = sf::Vector2f((float)cos(radian), (float)sin(radian));
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h"
+#include "Weapon.h"
 
 class Player :public Entity
 {
@@ -47,7 +48,7 @@ private:
 
 	sf::Clock tri;
 	sf::Clock rapid;
-
+	Weapon        m_weapon;
 	float rotation;
 
 	int index;

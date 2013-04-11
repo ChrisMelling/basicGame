@@ -8,7 +8,7 @@ Bullet::Bullet(float Speed, float x, float y, float rotation,GameState *state) :
 	Load(state->getApp()->gettextureManager().Get("Content/ball.png"));
 	SetPosition(x,y);
 	GetSprite().setRotation(rotation);
-	GetSprite().setScale(0.3f,0.3f);
+	GetSprite().setScale(0.4f,0.4);
 }
 
 Bullet::~Bullet()

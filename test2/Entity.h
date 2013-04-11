@@ -2,8 +2,6 @@
 
 #include "forward.h"
 
-class GameState;
-
 class Entity
 {
 public:

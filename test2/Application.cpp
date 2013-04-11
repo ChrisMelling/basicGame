@@ -48,6 +48,11 @@ void Application::Init()
 	_textureManager.Add("Content/particle.png");
 	_textureManager.Add("Content/bubble.png");
 
+	_textureManager.Add("Content/asteroid-big.png");
+	_textureManager.Add("Content/asteroid-medium.png");
+	_textureManager.Add("Content/asteroid-small.png");
+
+
 
 	_stateManager = new StateManager();
 
