@@ -3,6 +3,7 @@
 #include "Weapon.h"
 #include "Math.h"
 #include "Application.h"
+#include "smokeParticle.h"
 
 Projectile::Projectile(Entity* emitter, const sf::Vector2f& position, float angle,
         const sf::Texture& image, int speed, int damage) :
@@ -11,11 +12,13 @@ Projectile::Projectile(Entity* emitter, const sf::Vector2f& position, float angl
 		Load(_state->getApp()->gettextureManager().Get("Content/ball.png"));
         GetSprite().setRotation(angle);
 
-        m_speed.x = std::cos(angle) * speed;
-        m_speed.y = -std::sin(angle) * speed;
-
 		SetPosition(position.x,position.y);
-		GetSprite().setScale(0.4f,0.4);
+		GetSprite().setScale(0.6f,0.6);
+
+		for (int i = 0; i < 5; i++)
+		{
+			_state->addEntity(new smokeParticle(_state,this));
+		}
 }
 
 
@@ -27,6 +30,13 @@ Projectile* Projectile::clone() const
 
 void Projectile::Update(float frametime)
 {
+	if(timer.getElapsedTime().asSeconds() > 0.008)
+	{
+		_state->addEntity(new smokeParticle(_state,this));
+		timer.restart();
+	}
+
+
 	if(GetPosition().x < 0) { alive = false; }
 	if(GetPosition().y < 0) { alive = false; }
 

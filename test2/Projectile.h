@@ -34,6 +34,7 @@ public:
 
 private:
         sf::Vector2f m_speed;
+		sf::Clock timer;
 };
 
 #endif // PROJECTILE_HPP

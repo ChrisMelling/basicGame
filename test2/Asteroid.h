@@ -34,7 +34,7 @@ private:
          * Set a random image, according to the size
          */
         void SetRandomImage();
-
+		sf::Vector2f direction;
         Size size_;
         sf::Vector2f speed_;
         int rotation_speed_;

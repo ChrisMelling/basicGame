@@ -129,8 +129,8 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Source Files\Entities\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="messageParticle.cpp">
-      <Filter>Source Files\Entities\Particles</Filter>
+    <ClCompile Include="smokeParticle.cpp">
+      <Filter>Source Files\Entities\Actors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,7 +230,10 @@
     <ClInclude Include="Projectile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="messageParticle.h">
+    <ClInclude Include="smokeParticle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

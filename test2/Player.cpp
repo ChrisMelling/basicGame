@@ -28,6 +28,7 @@ Player::Player(GameState *state)
 
 	sound.setVolume(20.0f);
 
+
     // init weapons
     m_weapon.setOwner(this);
     m_weapon.setPosition(GetPosition());
@@ -41,14 +42,6 @@ Player::~Player()
 
 void Player::Update(float frametime)
 {
-	//if(clock2.getElapsedTime().asMilliseconds() > 20)
-	//{
-	//	_state->addEntity(new trailParticle(_colour,GetPosition().x,GetPosition().y,random_number(-1, 1),random_number(-1, 1),_state));
-	//		
-	//	clock2.restart();
-	//}
-
-
 	if(health > 0)
 	{
 		Controls(frametime);

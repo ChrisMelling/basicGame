@@ -12,7 +12,7 @@
 
 
 Weapon::Weapon():
-        m_fire_rate(1),
+        m_fire_rate(0.6),
         m_fire_timer(0.f),
         m_velocity(360),
         m_damage(2),
@@ -28,7 +28,6 @@ Weapon::Weapon():
 
 void Weapon::init(const char* weapon_id)
 {
-		//m_texture = m_owner->_state->getApp()->gettextureManager().Get("Content/ball.png");
         m_inited = true;
 }
 
@@ -49,10 +48,25 @@ float Weapon::shoot(float angle)
                                 createProjectile(offset, angle);
                                 break;
                         case 2:
-                                offset.y -= 5;
-                                createProjectile(offset, angle);
-                                offset.y += 10;
-                                createProjectile(offset, angle);
+
+								float rad;
+								offset = m_owner->GetSprite().getPosition();
+
+								rad = math::to_rad(m_owner->GetSprite().getRotation());
+
+								offset.x += 3*sin(rad);
+								offset.y += -3*cos(rad);
+
+								createProjectile(offset,m_owner->GetSprite().getRotation());
+
+								offset = m_owner->GetSprite().getPosition();
+
+								offset.x += -3*sin(rad);
+								offset.y += 3*cos(rad);
+
+								createProjectile(offset,m_owner->GetSprite().getRotation());
+
+
                                 break;
                         case 3:
                                 createProjectile(offset, angle);

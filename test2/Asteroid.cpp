@@ -9,7 +9,6 @@
 #define BIG_SPLIT_INTO     2
 #define MEDIUM_SPLIT_INTO  4
 
-#define BASE_SPEED         40
 #define ROTATION_SPEED_MIN 40
 #define ROTATION_SPEED_MAX 160
 
@@ -20,6 +19,22 @@ Asteroid::Asteroid(sf::Vector2f position, Size size,GameState *state, float angl
         rotation_speed_ = math::random(ROTATION_SPEED_MIN, ROTATION_SPEED_MAX);
         size_ = size;
         SetRandomImage();
+
+		float BASE_SPEED;
+
+		if(size == Size::BIG)
+		{
+			 BASE_SPEED = math::random(40,60);
+		}
+		if(size == Size::MEDIUM)
+		{
+			 BASE_SPEED = math::random(20,40);
+		}
+
+		if(size == Size::SMALL)
+		{
+			 BASE_SPEED = math::random(10,20);
+		}
 
         angle = math::to_rad(math::random(0, 360));
         speed_.x = std::cos(angle) * BASE_SPEED;

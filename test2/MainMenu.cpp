@@ -51,10 +51,6 @@ void MainMenu::Update(float elapsedTime)
 		}
 	}
 
-	if(sf::Mouse::isButtonPressed(sf::Mouse::Right))
-	{		
-		app->ChangeResolution(1920,1080,64,true);
-	}
 
 	if(clock.getElapsedTime().asMilliseconds() > 200)
 	{

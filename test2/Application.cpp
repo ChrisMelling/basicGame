@@ -24,9 +24,14 @@ void Application::Create( std::string title, float width, float height, int bpp,
 
 
 	if ( b_fullscreen )
-		_window.create( sf::VideoMode( (int)width, (int)height, bpp ), title_, sf::Style::Fullscreen );
+	{
+		 sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
+		 _window.create( sf::VideoMode( (int)width, (int)height, desktop.bitsPerPixel ), title_, sf::Style::Fullscreen );
+	}
 	else
+	{
 		_window.create( sf::VideoMode( (int)width, (int)height, bpp ), title_, sf::Style::Close);
+	}
 
 	b_running_ = true;
 	//_window.setFramerateLimit(60);
@@ -52,6 +57,7 @@ void Application::Init()
 	_textureManager.Add("Content/asteroid-medium.png");
 	_textureManager.Add("Content/asteroid-small.png");
 
+	_textureManager.Add("Content/smoke.png");
 
 
 	_stateManager = new StateManager();

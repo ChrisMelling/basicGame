@@ -4,7 +4,7 @@
 GameState::GameState(Statename newName, Application *App)
 	: name(newName),app(App), active(false), loaded(false)
 { 
-                         
+                  
 }
 
 GameState::~GameState()
