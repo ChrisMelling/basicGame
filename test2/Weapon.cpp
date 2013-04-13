@@ -72,6 +72,8 @@ float Weapon::shoot(float angle)
                                 createProjectile(offset, angle);
                                 createProjectile(offset, angle - ANGLE_VARIATION);
                                 createProjectile(offset, angle + ANGLE_VARIATION);
+
+	
                                 break;
                 }
 

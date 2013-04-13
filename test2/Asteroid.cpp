@@ -44,6 +44,8 @@ Asteroid::Asteroid(sf::Vector2f position, Size size,GameState *state, float angl
         GetSprite().setOrigin(rect.width / 2, rect.height / 2);
 
 		GetSprite().setPosition(position);
+
+		name = entityAsteroid;
 }
 
 
@@ -67,7 +69,6 @@ void Asteroid::Touch(Entity *Other)
 	if(Other->getEntityName() == entityBullet)
 	{
 		toggleDeath(); 
-		Other->alive = false;
 	}
 }
 

@@ -14,6 +14,7 @@ public:
 		entityEnemy,
 		entityCursor,
 		entityParticle,
+		entityAsteroid,
 	};
 
 	Entity(GameState *state, bool collidable);

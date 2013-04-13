@@ -3,9 +3,9 @@
 #include "Application.h"
 
 // SmokeParticle
-#define SMOKE_MAX_LIFETIME 1.2f
-#define SMOKE_MIN_SPEED  40
-#define SMOKE_MAX_SPEED  80
+#define SMOKE_MAX_LIFETIME 0.6f
+#define SMOKE_MIN_SPEED  20
+#define SMOKE_MAX_SPEED  6.0
 #define SMOKE_MIN_SIZE     0.2f
 #define SMOKE_MAX_SIZE     0.8f
 #define SMOKE_MIN_ANGLE    (1.0f)

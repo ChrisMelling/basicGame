@@ -23,15 +23,11 @@ Enemy::~Enemy()
 }
 
 void Enemy::Update(float frametime)
-{\
-	Player* _Player = reinterpret_cast<Player*>(_state->_actors.Get(entityPlayer));
+{
+	sf::Vector2f pos = _state->_actors.Get(entityPlayer)->GetPosition();
 
-	// Get the players position and then set the enemies target to that
-	if(_Player != NULL)
-	{
-		setTarget(_Player->GetPosition().x,_Player->GetPosition().y);	
-	}
-
+	setTarget(pos.x,pos.y);	
+	
 
 	seek(frametime);
 }

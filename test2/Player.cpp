@@ -98,6 +98,7 @@ void Player::Controls(float frametime)
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			m_weapon.shoot(GetSprite().getRotation());
+			//Fire();
 		}
 	}
 
@@ -167,7 +168,10 @@ void Player::Fire()
 	{
 		if(clock.getElapsedTime().asMilliseconds() > 300)
 		{
-			_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,GetSprite().getRotation(),_state));
+			for(int i = 0; i < 60; i+=10)
+			{
+				_state->addEntity(new Bullet(bulletSpeed,GetPosition().x,GetPosition().y,i,_state));
+			}
 			sound.play();
 			clock.restart();
 		}
@@ -190,7 +194,6 @@ void Player::rankUp()
 	bulletSpeed += 50;
 
 	//speed += 30;
-	
 }
 
 void Player::setTarget()

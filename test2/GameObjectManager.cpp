@@ -3,24 +3,46 @@
 #include <iostream>
 #include "Quadtree.h"
 
-GameObjectManager::GameObjectManager()
+GameObjectManager::GameObjectManager() : ID(0)
 {
-	ID = 0;
 	tree = new Quadtree( 0.0f, 0.0f, 1270, 720, 0, 3 );
 }
 
 GameObjectManager::~GameObjectManager()
 {
-	std::for_each(_gameObjects.begin(),_gameObjects.end(),GameObjectDeallocator());
+
 }
 
-void GameObjectManager::Add(Entity* gameObject)
+void GameObjectManager::Add(std::unique_ptr<Entity> gameObject)
 {
-	gameObject->setID(ID);
-	_gameObjects.insert(std::pair<int,Entity*>(ID,gameObject));
-
-
+	_gameObjects.insert(std::make_pair(ID, std::move(gameObject)));
 	ID++;
+}
+
+void GameObjectManager::Add(Entity* temp)
+{
+	_gameObjects.insert(std::make_pair(ID, std::move(std::unique_ptr<Entity>(temp))));
+	ID++;
+}
+
+
+std::unique_ptr<Entity>& GameObjectManager::Get(int number)
+{
+    auto it = _gameObjects.find(number);
+    if (it == _gameObjects.end()) throw std::invalid_argument("entry not found");
+    return it->second;
+}
+
+std::unique_ptr<Entity>& GameObjectManager::Get(Entity::entityName name)
+{
+	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end(); itr++)
+	{
+		if(itr->second->getEntityName() == name)
+		{
+			return Get(itr->second->getID());
+		}
+	}
+	return std::unique_ptr<Entity>(nullptr);
 }
 
 void GameObjectManager::Remove(int ID)
@@ -28,39 +50,8 @@ void GameObjectManager::Remove(int ID)
 	auto results = _gameObjects.find(ID);
 	if(results != _gameObjects.end() )
 	{
-		delete results->second;
 		_gameObjects.erase(results);
 	}
-}
-
-Entity * GameObjectManager::Get(Entity::entityName name) const
-{
-	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end(); itr++)
-	{
-		if(itr->second->getEntityName() == name)
-		{
-			return itr->second;
-		}
-
-		if(itr == _gameObjects.end())
-		{
-			return NULL;
-		}
-	}
-	return NULL;
-}
-
-void GameObjectManager::getGroup(Entity::entityName name, std::map<int, Entity*> &list) const
-{
-    list.clear();
- 
-	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end(); itr++)
-	{
-        if(itr->second->getEntityName() == name)
-        {
-            list.insert(std::pair<int,Entity*>(itr->second->getID(),itr->second));
-        }
-    }
 }
 
 int GameObjectManager::getObjectCount() const
@@ -81,23 +72,19 @@ void GameObjectManager::updateAll(float frametime)
 {	
 	checkAlive();
 
-	//std::cout << getObjectCount() << "\n";
-
 	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end(); itr++)
 	{
 		itr->second->Update(frametime);
 
-
 		if(itr->second->isCollidable())
 		{
-			tree->AddObject(itr->second);
-		}
-		
+			tree->AddObject(itr->second.get());
+		}	
 	}	
 
 	for (auto x = _gameObjects.begin(); x != _gameObjects.end(); x++)
 	{
-		Entity* object = x->second;
+		std::unique_ptr<Entity>& object = x->second;
 
 		if(object->isCollidable())
 		{
@@ -125,12 +112,11 @@ void GameObjectManager::checkAlive()
 {
 	for (auto itr = _gameObjects.begin(); itr != _gameObjects.end();)
 	{
-		std::map<int, Entity*>::iterator toDelete = itr;
+		std::unordered_map<int, std::unique_ptr<Entity>>::iterator toDelete = itr;
 		itr++;
 
 		if(!toDelete->second->alive)
 		{
-			delete toDelete->second;
 			_gameObjects.erase(toDelete);
 		}
 	}

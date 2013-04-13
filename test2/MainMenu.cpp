@@ -44,6 +44,7 @@ void MainMenu::Update(float elapsedTime)
 		//	app->changeState(MainGameState);
 		//}
 
+
 		if(_mouse.getGlobalBounds().contains((float)getApp()->getMousePos().x,(float)getApp()->getMousePos().y))
 		{
 			app->setMouse();

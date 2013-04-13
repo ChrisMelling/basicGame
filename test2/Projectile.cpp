@@ -49,3 +49,11 @@ void Projectile::Update(float frametime)
 
 	GetSprite().move(direction * speed * frametime);
 }
+
+void Projectile::Touch(Entity *Other)
+{
+	if(Other->getEntityName() == entityAsteroid)
+	{
+		toggleDeath(); 
+	}
+}
